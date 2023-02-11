@@ -30,6 +30,9 @@ public class SelecaoService {
     public void deleteById(Long id) {
         selecaoRepository.deleteById(id);
     }
+    public void delete(Selecao selecao){
+        selecaoRepository.delete(selecao);
+    }
 
 
 }
