@@ -44,10 +44,9 @@ public class SelecaoController {
                 })
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Seleção não encontrado"));
-
     }
 
-    @DeleteMapping("{id}")
+    @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@PathVariable Long id, @RequestBody Selecao selecao) {
         selecaoService.findById(id).map(s -> {

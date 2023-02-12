@@ -1,4 +1,4 @@
-<h1>Sistema de Jogo de apostos</h1>
+<h1>Sistema de Jogo de apostas</h1>
 
 <p align="length">Sistema de jogo de apostas ultilizando spring framerwork </p>
 
