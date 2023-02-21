@@ -5,13 +5,12 @@ import com.alexandregsouza.sistema.de.jogo.de.apostas.service.SelecaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/api/selecao")
 public class SelecaoController {
 
@@ -19,7 +18,7 @@ public class SelecaoController {
     private SelecaoService selecaoService;
 
     @PostMapping
-    public ResponseEntity<Selecao> save(Selecao selecao) {
+    public ResponseEntity<Selecao> save(@RequestBody Selecao selecao) {
         return ResponseEntity.status(HttpStatus.CREATED).body(selecaoService.save(selecao));
     }
 
@@ -34,8 +33,8 @@ public class SelecaoController {
         return ResponseEntity.status(HttpStatus.OK).body(selecao);
     }
 
-    @DeleteMapping("{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable Long id) {
         selecaoService.findById(id)
                 .map(selecao -> {

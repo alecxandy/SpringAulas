@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.util.List;
 
 import java.time.LocalDateTime;
@@ -19,11 +20,16 @@ public class Aposta {
     private Long id;
     @Column(name = "data")
     private LocalDateTime localDateTime;
+    @Column(name = "pl_casa")
+    private int placarCasa;
+    @Column(name = "pl_fora")
+    private int placarFora;
     @ManyToOne
     @JoinColumn(name = "apostador_id")
     private Apostador apostador;
-    @ManyToMany
-    private List<Partida> partidaList;
+    @OneToOne
+    @JoinColumn(name = "partida_id")
+    private Partida partida;
 
 
 }
